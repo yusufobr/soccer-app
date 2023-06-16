@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectLoading, selectStanding } from '../../redux/api/standingSlice'
+import { selectLoading, selectSeason, selectStanding } from '../../redux/api/standingSlice'
 import { fetchStanding } from '../../redux/api/standingSlice'
 
 
 function Main() {
   const [league, setLeague] = useState('eng.1')
-  const [season, setSeason] = useState('2022')
-  const dispatch = useDispatch()
-
+  const season = useSelector(selectSeason)
   const standing = useSelector(selectStanding)
   const loading = useSelector(selectLoading)
+  
+  const dispatch = useDispatch()
 
   useEffect(()=> {
     dispatch(fetchStanding({league, season}))
@@ -20,7 +20,10 @@ function Main() {
   return (
     <div className='px-3 py-4 pb-12 rounded-xl bg-white drop-shadow-xl'>
       <div className='flex flex-col gap-2 items-center'>
-        <span className='font-semibold'>standing</span>
+        <span className='font-semibold'>
+          Standing
+          {loading ? <span className='text-sm text-gray-600'> loading...</span> : ''}
+          </span>
         <div className='w-full'>
           <div className='flex gap-4 text-center py-1 text-gray-500'>
             <div className='w-6 px-2'>#</div>
@@ -34,7 +37,7 @@ function Main() {
           <hr />
           {standing.map((item, index) => (
         <div key={index} className='flex items-center gap-3  text-center py-1 font-semibold cursor-default'>
-          <div title={item.note?.description} className={`w-10 px-1 flex flex-col items-center ${item.note ? `bg-[${item.note.color}]` : ''} rounded-full`}>
+          <div title={item.note?.description} className={`w-10 h-[28px] px-1 flex flex-col justify-center items-center ${item.note ? `bg-[${item.note.color}]` : ''} rounded-full`}>
             <div>
             {index + 1}
             </div>
