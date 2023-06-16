@@ -2,7 +2,7 @@ import React from "react";
 
 function Header() {
   return (
-    <div className="px-3 py-6 rounded-xl text-white flex gap-4 my-bg">
+    <div className="px-3 py-6 rounded-xl text-white flex gap-4 drop-shadow-2xl my-bg">
       <div className="p-2 bg-white rounded-md">
         <img
           width={80}
