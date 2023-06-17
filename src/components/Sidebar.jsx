@@ -18,7 +18,7 @@ function Sidebar() {
       <div className="font-semibold mb-3">Leagues</div>
       <hr />
       <ul className="flex flex-col h-full justify-around">
-        {leagues.map((league) => (
+        {leagues.slice(0, -1).map((league) => (
           <li onClick={() => dispatch(fetchStanding({ league : league.id, season : "2022" }))} className="rounded-sm hover:bg-gray-200" key={league.id}>
             <div className="flex gap-2 items-center">
               <img title={league.abbr} width={35} src={league.logos.light} />

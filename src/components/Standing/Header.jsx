@@ -16,7 +16,7 @@ function Header() {
       <div className="p-2 bg-white rounded-md">
         <img
           width={80}
-          src="https://a.espncdn.com/i/teamlogos/soccer/500/382.png"
+          src="https://a.espncdn.com/i/leaguelogos/soccer/500/23.png"
         />
       </div>
       <div className="flex flex-col gap-2">

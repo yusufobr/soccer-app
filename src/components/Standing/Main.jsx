@@ -7,6 +7,7 @@ import {
   selectStanding,
 } from "../../redux/api/standingSlice";
 import { fetchStanding } from "../../redux/api/standingSlice";
+import BeatLoader from 'react-spinners/BeatLoader'
 
 function Main() {
   // const [league, setLeague] = useState("eng.1");
@@ -24,10 +25,10 @@ function Main() {
   return (
     <div className="px-3 py-4 pb-12 rounded-xl bg-white drop-shadow-xl">
       <div className="flex flex-col gap-2 items-center">
-        <span className="font-semibold">
+        <span className="font-semibold text-center relative">
           Standing
           {loading ? (
-            <span className="text-sm text-gray-600"> loading...</span>
+            <div className="absolute top-5 left-4"><BeatLoader color="gray" size={6} /></div>
           ) : (
             ""
           )}
