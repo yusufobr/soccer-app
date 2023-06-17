@@ -5,6 +5,7 @@ const BASE = "https://api-football-standings.azharimm.dev/leagues";
 const initialState = {
   standing: [],
   isLoading: false,
+  league: 'eng.1',
   season: '2022',
 };
 
@@ -35,6 +36,9 @@ const standingSlice = createSlice({
   reducers: {
     setseson: (state, action) => {
       state.season = action.payload;
+    },
+    setleague: (state, action) => {
+      state.league = action.payload
     }
   }
 })
@@ -42,7 +46,8 @@ const standingSlice = createSlice({
 export const selectStanding = (state) => state.standing.standing
 export const selectLoading = (state) => state.standing.isLoading
 export const selectSeason = (state) => state.standing.season
+export const selectLeague = (state) => state.standing.league
 
-export const { setseson } = standingSlice.actions;
+export const { setseson, setleague } = standingSlice.actions;
 
 export default standingSlice.reducer;
