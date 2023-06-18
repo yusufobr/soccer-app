@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { setseson } from "../../redux/api/standingSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectRecentLeague, setseson } from "../../redux/api/standingSlice";
 
 function Header() {
   const [theSeason, setTheSeason] = useState('2022')
   console.log('theseason', theSeason)
+  const recentLeague = useSelector(selectRecentLeague)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -20,7 +21,7 @@ function Header() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <h2 className="text-2xl font-bold">Premier League</h2>
+        <h2 className="text-2xl font-bold">{recentLeague}</h2>
         <div className="flex gap-2">
           <img
             className="rounded-lg"

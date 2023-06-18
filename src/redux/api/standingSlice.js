@@ -7,6 +7,7 @@ const initialState = {
   isLoading: false,
   league: 'eng.1',
   season: '2022',
+  recentLeague: '',
 };
 
 export const fetchStanding = createAsyncThunk(
@@ -16,7 +17,7 @@ export const fetchStanding = createAsyncThunk(
       `${BASE}/${league}/standings?season=${season}&sort=asc`
     );
     const result = await req.json();
-    return result.data.standings
+    return result.data
   }
 );
 
@@ -30,7 +31,8 @@ const standingSlice = createSlice({
       })
       .addCase(fetchStanding.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.standing = action.payload;
+        state.standing = action.payload.standings;
+        state.recentLeague = action.payload.name;
       })
   },
   reducers: {
@@ -47,6 +49,7 @@ export const selectStanding = (state) => state.standing.standing
 export const selectLoading = (state) => state.standing.isLoading
 export const selectSeason = (state) => state.standing.season
 export const selectLeague = (state) => state.standing.league
+export const selectRecentLeague = (state) => state.standing.recentLeague
 
 export const { setseson, setleague } = standingSlice.actions;
 
