@@ -1,23 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecentLeague, setseson } from "../../redux/api/standingSlice";
+import { selectLeagues } from "../../redux/api/leagueSlice";
 
 function Header() {
   const [theSeason, setTheSeason] = useState('2022')
-  console.log('theseason', theSeason)
   const recentLeague = useSelector(selectRecentLeague)
+  const recentLeagueLogo = useSelector(selectLeagues)
+  const [theLogo, setTheLogo] = useState("https://a.espncdn.com/i/leaguelogos/soccer/500/23.png")
   const dispatch = useDispatch()
+  console.log('recentLeagueLogo --->', recentLeagueLogo)
 
   useEffect(() => {
     dispatch(setseson(theSeason))
-  }, [theSeason])
+    setTimeout(() => {
+      findRecentLogo()
+
+    }, 500)
+  }, [theSeason, recentLeague])
+
+  const findRecentLogo = () => {
+    const theObj = recentLeagueLogo.find(obj => obj.name === recentLeague)
+    setTheLogo(theObj.logos.light)
+  }
 
   return (
     <div className="px-3 py-6 rounded-xl text-white flex gap-4 drop-shadow-2xl my-bg">
       <div className="p-2 bg-white rounded-md">
         <img
           width={80}
-          src="https://a.espncdn.com/i/leaguelogos/soccer/500/23.png"
+          src={theLogo}
         />
       </div>
       <div className="flex flex-col gap-2">
