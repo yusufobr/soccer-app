@@ -17,7 +17,7 @@ function Sidebar() {
     <div className="px-3 py-4 pb-12 rounded-xl bg-white drop-shadow-xl">
       <div className="font-semibold mb-3">Leagues</div>
       <hr />
-      <ul className="flex flex-col h-full justify-around">
+      <ul className="flex flex-col gap-3 mt-4">
         {leagues.slice(0, -1).map((league) => (
           <li onClick={() => dispatch(fetchStanding({ league : league.id, season : "2022" }))} className="rounded-sm hover:bg-gray-200" key={league.id}>
             <div className="flex gap-2 items-center">
