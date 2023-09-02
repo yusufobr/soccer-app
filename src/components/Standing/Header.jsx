@@ -43,6 +43,7 @@ function Header() {
           <span className="font-semibold">England</span>
         </div>
         <select onChange={(e) => setTheSeason(e.target.value) } className="w-20 p-1 font-semibold rounded-md bg-[#00000040] " data-te-select-init>
+            <option value="2023">23/24</option>
             <option value="2022">22/23</option>
             <option value="2021">21/22</option>
             <option value="2020">20/21</option>
