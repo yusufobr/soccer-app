@@ -6,7 +6,7 @@ const initialState = {
   standing: [],
   isLoading: false,
   league: 'eng.1',
-  season: '2022',
+  season: '2023',
   recentLeague: '',
 };
 
