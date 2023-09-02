@@ -4,7 +4,7 @@ import { selectRecentLeague, setseson } from "../../redux/api/standingSlice";
 import { selectLeagues } from "../../redux/api/leagueSlice";
 
 function Header() {
-  const [theSeason, setTheSeason] = useState('2022')
+  const [theSeason, setTheSeason] = useState('2023')
   const recentLeague = useSelector(selectRecentLeague)
   const recentLeagueLogo = useSelector(selectLeagues)
   const [theLogo, setTheLogo] = useState("https://a.espncdn.com/i/leaguelogos/soccer/500/23.png")
