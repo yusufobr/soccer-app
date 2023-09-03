@@ -5,7 +5,7 @@ const BASE = "https://api-football-standings.azharimm.dev/leagues";
 const initialState = {
   leagues: [],
   isLoading: false,
-  season: "2022",
+  season: "2023",
 };
 
 export const fetchLeagues = createAsyncThunk(
